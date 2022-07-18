@@ -40,14 +40,14 @@ CREATE DATABASE pratica_sequelize;
 Criar o arquivo .sequelize com o seguinte contéudo
 
 ```js
-const path = require('path')
+const path = require("path");
 
 module.exports = {
-    config: path.resolve('./database/config', 'config.json'),
-    'models-path': path.resolve('./database/models'),
-    'seeders-path': path.resolve('./database/seeders'),
-    'migrations-path': path.resolve('./database/migrations'),
-}
+  config: path.resolve("./database/config", "config.json"),
+  "models-path": path.resolve("./database/models"),
+  "seeders-path": path.resolve("./database/seeders"),
+  "migrations-path": path.resolve("./database/migrations"),
+};
 ```
 
 ```sh
@@ -81,3 +81,26 @@ No arquivo server/database/config.json, deixaremos o conteúdo da seguinte manei
   }
 }
 ```
+
+## Models
+
+Vamso criar os models a partir do sequelize-cli.
+
+### Model User
+
+```sh
+# MODEL USER
+npx sequelize-cli model:generate --name User --attributes nome:string,sobrenome:string,email:string
+
+# MODEL STATUS
+npx sequelize-cli model:generate --name Status --attributes titulo:string
+
+#MODEL TODO
+npx sequelize-cli model:generate --name Todo --attributes nome:string,resumo:string,descricao:string
+```
+
+
+
+Criar um model para status com titulo
+criar um model para todo com titulo, resumo e descricao
+(tudo como string)
