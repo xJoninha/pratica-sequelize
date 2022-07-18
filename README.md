@@ -25,7 +25,7 @@ cd server && npm i sequelize mysql2 --save && npm i nodemon sequelize-cli --save
 }
 ```
 
-Instalar todas as dependências com `npm install` .
+Instalar todas as dependências com `npm install` (dentro da pasta 'server').
 
 Rodar o servidor com `npm run dev`.
 
@@ -33,4 +33,51 @@ No Workbench, após ativar o MySQL via xampp, executar a seguinte query para cri
 
 ```sql
 CREATE DATABASE pratica_sequelize;
+```
+
+## Conexão com o BD
+
+Criar o arquivo .sequelize com o seguinte contéudo
+
+```js
+const path = require('path')
+
+module.exports = {
+    config: path.resolve('./database/config', 'config.js'),
+    'models-path': path.resolve('./database/models'),
+    'models-path': path.resolve('./database/models'),
+    'migrations-path': path.resolve('./database/migrations'),
+}
+```
+
+```sh
+npx sequelize init
+```
+
+No arquivo server/database/config.json, deixaremos o conteúdo da seguinte maneira:
+
+```json
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "pratica_sequelize",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "pratica_sequelize",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "pratica_sequelize",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
 ```
