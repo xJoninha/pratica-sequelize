@@ -43,9 +43,9 @@ Criar o arquivo .sequelize com o seguinte contéudo
 const path = require('path')
 
 module.exports = {
-    config: path.resolve('./database/config', 'config.js'),
+    config: path.resolve('./database/config', 'config.json'),
     'models-path': path.resolve('./database/models'),
-    'models-path': path.resolve('./database/models'),
+    'seeders-path': path.resolve('./database/seeders'),
     'migrations-path': path.resolve('./database/migrations'),
 }
 ```
