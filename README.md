@@ -99,8 +99,29 @@ npx sequelize-cli model:generate --name Status --attributes titulo:string
 npx sequelize-cli model:generate --name Todo --attributes nome:string,resumo:string,descricao:string
 ```
 
+Veja que os models não só foram criados, como também os arquivos de migration, e o próprio sequelize criou os campos id, createdAt e updatedAt nas migrations.
 
+| IMPORTANTE: repare que temos nos arquivos de migrations os métodos `up` e `down` - o método `up` é executado quando rodamos uma migration enquanto o método `down` é executado quando desfazemos (undo) uma migration. Por isso é importante que todo método `down` realmente desfaça o que está sendo feito pelo método `up` (no caso, o método `up` cria uma tabela e o método `down` a apaga).
 
-Criar um model para status com titulo
-criar um model para todo com titulo, resumo e descricao
-(tudo como string)
+Para rodarmos a migration, vamos executar no terminal o seguinte comando (dentro da pasta server):
+
+```sh
+npx sequelize-cli db:migration
+```
+
+```sql
+-- CREATE DATABASE pratica_sequelize;
+USE pratica_sequelize;
+
+DESCRIBE sequelizemeta;
+SELECT * FROM sequelizemeta;
+
+DESCRIBE users;
+SELECT * FROM users;
+
+DESCRIBE todos;
+SELECT * FROM todos;
+
+DESCRIBE statuses;
+SELECT * FROM statuses;
+```
